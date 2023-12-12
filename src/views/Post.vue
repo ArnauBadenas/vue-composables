@@ -8,10 +8,19 @@
 <script setup>
 import { useRoute } from 'vue-router';
 import usePost from '../composables/usePost.js'
+import useUser from '../composables/useUser';
+
 const route = useRoute()
+
+//Utilitzar composables
 const {post, llegirPost} = usePost()
-llegirPost(route.params.id)
-const user = {
-  name: "Leanne Graham",
-};
+const {user, llegirUser} = useUser()
+
+//Recullo el post i usuari de forma asincrona, 
+//perque el usuari es dependent de que es reculli el post.
+async function getPostInfo ()  {
+  await llegirPost(route.params.id)
+  await llegirUser(post.value.userId)
+}
+getPostInfo()
 </script>
