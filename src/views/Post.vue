@@ -6,11 +6,11 @@
   </div>
 </template>
 <script setup>
-const post = {
-  title:
-    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  body: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto",
-};
+import { useRoute } from 'vue-router';
+import usePost from '../composables/usePost.js'
+const route = useRoute()
+const {post, llegirPost} = usePost()
+llegirPost(route.params.id)
 const user = {
   name: "Leanne Graham",
 };
