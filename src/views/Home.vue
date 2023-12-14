@@ -5,7 +5,16 @@
 </template>
 <script setup>
 import usePost from '../composables/usePost.js'
+import useResources from '../composables/useResources';
 import PostCard from "../components/PostCard.vue";
-const {posts, llegirPosts} = usePost()
+
+//Utilitzant el composable de post
+// const {posts, llegirPosts} = usePost()
+
+//EX4. Utilitzant el composable general
+const {resource:posts, getResources:llegirPosts} = useResources("posts")
+
 llegirPosts()
+
+
 </script>
