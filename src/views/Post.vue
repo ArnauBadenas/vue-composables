@@ -22,14 +22,17 @@ const route = useRoute()
 Aqui s'utilitza un alias per a renombrar les variables perque es puguin utilitzar
 varies vegades la mateixa funció i variable ref.
 */
-const {resource:post, getOneResource:llegirPost} = useResources("posts")
-const {resource:user, getOneResource:llegirUser} = useResources("users")
+const {resource:post, getResources:llegirPost} = useResources()
+const {resource:user, getResources:llegirUser} = useResources()
+
 
 //Recullo el post i usuari de forma asincrona, 
 //perque el usuari es dependent de que es reculli el post.
 async function getPostInfo ()  {
-  await llegirPost(route.params.id)
-  await llegirUser(post.value.userId)
+  await llegirPost(`https://jsonplaceholder.typicode.com/posts/`+route.params.id)
+  console.log(post.value)
+  
+  await llegirUser(`https://jsonplaceholder.typicode.com/users/`+post.value.userId)
 }
 getPostInfo()
 </script>

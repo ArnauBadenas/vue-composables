@@ -1,21 +1,16 @@
 import { ref } from "vue"
-export default function useResources(resourceName) {
+export default function useResources() {
     const resource = ref([])
 
-    const getResources = async () => {
-        const resourcesURL = `https://jsonplaceholder.typicode.com/${resourceName}`
-        const response = await fetch(resourcesURL)
-        resource.value = await response.json()
-    }
-    const getOneResource = async (id) => {
-        const resourceURL = `https://jsonplaceholder.typicode.com/${resourceName}/${id}`
+    const getResources = async (resourceURL) => {
         const response = await fetch(resourceURL)
         resource.value = await response.json()
     }
 
+
     return {
         resource,
         getResources,
-        getOneResource
+
     }
 }

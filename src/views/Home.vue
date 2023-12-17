@@ -12,9 +12,9 @@ import PostCard from "../components/PostCard.vue";
 // const {posts, llegirPosts} = usePost()
 
 //EX4. Utilitzant el composable general
-const {resource:posts, getResources:llegirPosts} = useResources("posts")
+const {resource:posts, getResources:llegirPosts} = useResources()
 
-llegirPosts()
+llegirPosts("https://jsonplaceholder.typicode.com/posts")
 
 
 </script>
